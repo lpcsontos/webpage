@@ -1,0 +1,982 @@
+/*
+ * csontoslp.hu
+ * Desktop layout follows the 1440px design frame, the mobile layout (< 960px) the 390px frame.
+ */
+
+/* ---------- Fonts (self-hosted, SIL Open Font License, see assets/fonts) ---------- */
+
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/press-start-2p-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/press-start-2p-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-mono-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --bg: #0e1726;
+  --bar: #0d1117;
+  --window: #16213a;
+  --line: #4f9dff;
+  --title: #2d6cdf;
+  --text: #e6edf7;
+  --muted: #a5b4cb;
+  --white: #ffffff;
+  --green: #6be675;
+  --divider: rgba(79, 157, 255, 0.35);
+  --close: #c0392b;
+  --close-line: #ff6b6b;
+  --accent: #c81e3a;
+  --accent-line: #ff6b81;
+
+  --pixel: "Press Start 2P", ui-monospace, monospace;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 27.2px;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, p, ul, ol, figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--line);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-position: from-font;
+}
+
+a:hover {
+  color: #82b8ff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--title);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+[id] {
+  scroll-margin-top: 24px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: var(--title);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.skip-link:hover,
+.skip-link:focus {
+  color: var(--white);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 56px;
+  padding: 0 40px;
+  background: var(--bar);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--pixel);
+  font-size: 12px;
+  line-height: 19.2px;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo:hover {
+  color: var(--white);
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ---------- Page ---------- */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  width: min(1120px, 100% - 48px);
+  margin: 0 auto;
+  padding: 88px 0 104px;
+}
+
+/* ---------- Window (drawn like Odin OS draws its windows) ---------- */
+
+.window {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--window);
+  border: 1px solid var(--line);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.titlebar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  height: 28px;
+  padding: 0 5px 0 10px;
+  background: var(--title);
+}
+
+.titlebar-title {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--pixel);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--white);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  display: flex;
+  flex: none;
+  gap: 4px;
+}
+
+.ctl {
+  display: flex;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid;
+}
+
+.ctl-min {
+  align-items: flex-end;
+  padding-bottom: 3px;
+  background: var(--title);
+  border-color: var(--line);
+}
+
+.ctl-min::before {
+  content: "";
+  width: 8px;
+  height: 2px;
+  background: var(--white);
+}
+
+.ctl-close {
+  align-items: center;
+  background: var(--close);
+  border-color: var(--close-line);
+}
+
+.ctl-close img {
+  width: 8px;
+  height: 8px;
+}
+
+.window-body {
+  padding: 40px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+}
+
+/* ---------- Shared text blocks ---------- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 37.5px;
+  color: var(--white);
+}
+
+.h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  color: var(--white);
+}
+
+.dash-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash-list li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.dash-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 2px;
+  background: var(--line);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--muted);
+}
+
+.meta a {
+  max-width: 100%;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.shot figcaption {
+  padding: 10px 14px;
+  background: var(--bar);
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 22.4px;
+  color: var(--muted);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.hero-text {
+  display: flex;
+  flex: 0 1 544px;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.hero h1 {
+  font-family: var(--pixel);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 60px;
+  color: var(--white);
+}
+
+.hero-lead {
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25.6px;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  color: var(--white);
+  background: rgba(79, 157, 255, 0.12);
+}
+
+.btn-primary {
+  background: var(--title);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: #3b7be6;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 25.6px;
+}
+
+.status::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  background: var(--green);
+}
+
+.hero-note {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--muted);
+}
+
+.hero-visual {
+  position: relative;
+  flex: 0 0 512px;
+  height: 508px;
+}
+
+.console-window {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 512px;
+}
+
+.console-body {
+  padding: 18px 20px 150px;
+}
+
+.console-body p {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 26.25px;
+  white-space: pre;
+}
+
+.photo-window {
+  position: absolute;
+  left: 328px;
+  top: 246px;
+  width: 184px;
+}
+
+.photo {
+  width: 100%;
+  height: 232px;
+  object-fit: cover;
+}
+
+/* ---------- Odin OS ---------- */
+
+.odin-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.odin-info {
+  flex: 0 0 400px;
+  min-width: 0;
+}
+
+.odin-shot {
+  flex: 1 1 0;
+}
+
+.boot {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--divider);
+}
+
+.boot-list {
+  display: flex;
+  gap: 24px;
+}
+
+.boot-list li {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.boot-num {
+  font-family: var(--pixel);
+  font-size: 10px;
+  line-height: 15px;
+  color: var(--green);
+}
+
+.boot-file {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--white);
+}
+
+.boot-desc {
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--muted);
+}
+
+.doom {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--divider);
+}
+
+.doom-shot {
+  flex: 0 1 480px;
+}
+
+.doom-text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ---------- Project rows ---------- */
+
+.pair,
+.trio {
+  display: flex;
+  gap: 24px;
+}
+
+.pair > .window,
+.trio > .window {
+  flex: 1 1 0;
+}
+
+.tank-photo {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.repo-list {
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.repo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.repo-list a {
+  min-width: 0;
+  font-family: var(--mono);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.repo-list a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.repo-list span {
+  flex: none;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ---------- Skills ---------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.skill-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-col p {
+  font-size: 16px;
+  line-height: 25.6px;
+}
+
+/* ---------- Education ---------- */
+
+.edu-grid {
+  display: flex;
+  gap: 48px;
+}
+
+.edu-col {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.edu-row .when {
+  flex: none;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.contact-title {
+  font-family: var(--pixel);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 38.4px;
+  color: var(--white);
+}
+
+.contact-lead {
+  max-width: 672px;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  font-size: 18px;
+  line-height: 28.8px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  padding: 0 40px;
+  background: var(--bar);
+  border-top: 1px solid var(--line);
+}
+
+.email-btn {
+  padding: 10px 18px;
+  background: var(--accent);
+  border: 1px solid var(--accent-line);
+  font-family: var(--pixel);
+  font-size: 11px;
+  line-height: 17.6px;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.email-btn:hover {
+  background: #db2d4a;
+  color: var(--white);
+}
+
+.footer-place {
+  font-size: 14px;
+  line-height: 22.4px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Narrower desktop windows (960px to 1143px): 40px no longer fits "Levente Péter" on one line ---------- */
+
+@media (max-width: 1143px) {
+  .hero h1 {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+/* ---------- Mobile (< 960px), follows the 390px design frame ---------- */
+
+@media (max-width: 959px) {
+  .site-header,
+  .site-footer {
+    padding: 0 16px;
+  }
+
+  .page {
+    gap: 48px;
+    width: min(640px, 100% - 32px);
+    padding: 48px 0 64px;
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-text {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .hero-lead {
+    font-size: 19px;
+    line-height: 28.5px;
+  }
+
+  .hero-visual {
+    flex: none;
+    width: 100%;
+    max-width: 358px;
+    height: 420px;
+  }
+
+  .console-window {
+    width: calc(100% - 12px);
+  }
+
+  .console-body {
+    padding: 14px 14px 40px;
+  }
+
+  /* 12.5px at 390px wide, scaled down on narrower phones so the longest line stays inside the window */
+  .console-body p {
+    font-size: min(12.5px, calc((100vw - 67px) / 25.8));
+    line-height: 1.75;
+  }
+
+  .photo-window {
+    left: auto;
+    right: 0;
+    top: 204px;
+    width: 150px;
+  }
+
+  .photo {
+    height: 186px;
+  }
+
+  .window-body,
+  .card-body {
+    padding: 24px 20px;
+  }
+
+  .h2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .odin-top {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .odin-info,
+  .odin-shot,
+  .doom-shot {
+    flex: none;
+    width: 100%;
+  }
+
+  .boot-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .doom {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .pair,
+  .trio {
+    flex-direction: column;
+  }
+
+  .pair > .window,
+  .trio > .window {
+    flex: none;
+  }
+
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .edu-grid {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .edu-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-title {
+    font-size: 16px;
+    line-height: 25.6px;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 719px) {
+  .nav {
+    display: none;
+  }
+}
